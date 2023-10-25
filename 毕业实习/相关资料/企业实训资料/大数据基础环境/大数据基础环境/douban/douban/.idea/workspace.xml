@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ab29ef9e-6dfb-4855-a8b6-b7434ff80edc" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1Yc5XOqPNLdIUAnul17eHtkDytK" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="sqlite" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="ignore.virus.scanning.warn.message" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\demo\shixun\douban\testTemp" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\demo\shixun\douban\tt" />
+      <recent name="D:\demo\shixun\douban\test" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.rangeTest">
+    <configuration name="rangeTest" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="douban" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/rangeTest.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="spider" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="douban" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/spider.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="testBs4" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="douban" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/testBs4.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="testRe" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="douban" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/testRe.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="testUrllib" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="douban" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/testUrllib.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.rangeTest" />
+        <item itemvalue="Python.testRe" />
+        <item itemvalue="Python.spider" />
+        <item itemvalue="Python.testBs4" />
+        <item itemvalue="Python.testUrllib" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:movie.db" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:movie.db" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@77e6d8a7" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ab29ef9e-6dfb-4855-a8b6-b7434ff80edc" name="Default Changelist" comment="" />
+      <created>1583229080652</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583229080652</updated>
+      <workItem from="1583229088880" duration="310000" />
+      <workItem from="1583229436079" duration="1853000" />
+      <workItem from="1583236387594" duration="1794000" />
+      <workItem from="1583238202924" duration="2138000" />
+      <workItem from="1583243763928" duration="1727000" />
+      <workItem from="1583245552186" duration="1760000" />
+      <workItem from="1583247333122" duration="2046000" />
+      <workItem from="1583250817320" duration="603000" />
+      <workItem from="1583252004335" duration="1182000" />
+      <workItem from="1583253201401" duration="1796000" />
+      <workItem from="1583255017778" duration="1292000" />
+      <workItem from="1583256532892" duration="1779000" />
+      <workItem from="1583258331316" duration="1016000" />
+      <workItem from="1583259376612" duration="1587000" />
+      <workItem from="1583260999414" duration="1781000" />
+      <workItem from="1583262800475" duration="743000" />
+      <workItem from="1583283977248" duration="1232000" />
+      <workItem from="1583370403986" duration="3000" />
+      <workItem from="1583465463183" duration="1780000" />
+      <workItem from="1583478033239" duration="163000" />
+      <workItem from="1583547656801" duration="332000" />
+      <workItem from="1583565113156" duration="70000" />
+      <workItem from="1583603244640" duration="66000" />
+      <workItem from="1583648777579" duration="1259000" />
+      <workItem from="1583650543422" duration="1778000" />
+      <workItem from="1583652366768" duration="717000" />
+      <workItem from="1583666264159" duration="1198000" />
+      <workItem from="1583715144943" duration="610000" />
+      <workItem from="1583719659072" duration="1204000" />
+      <workItem from="1583724801144" duration="1178000" />
+      <workItem from="1583737603392" duration="613000" />
+      <workItem from="1583744797616" duration="884000" />
+      <workItem from="1583766066757" duration="3100000" />
+      <workItem from="1583817938741" duration="604000" />
+      <workItem from="1583830664116" duration="442000" />
+      <workItem from="1583831265238" duration="21000" />
+      <workItem from="1583840563104" duration="2853000" />
+      <workItem from="1584439390311" duration="1246000" />
+      <workItem from="1584455482343" duration="909000" />
+      <workItem from="1584499314336" duration="204000" />
+      <workItem from="1584531704017" duration="3140000" />
+      <workItem from="1584667343696" duration="1766000" />
+      <workItem from="1584676735257" duration="2174000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="996" height="141" key="GridCell.Tab.0.bottom" timestamp="1641282392112">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state width="996" height="141" key="GridCell.Tab.0.bottom/0.0.1536.816@0.0.1536.816" timestamp="1641282392112" />
+    <state width="1322" height="143" key="GridCell.Tab.0.bottom/0.0.1707.920@0.0.1707.920" timestamp="1634181350008" />
+    <state width="996" height="141" key="GridCell.Tab.0.center" timestamp="1641282392111">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state width="996" height="141" key="GridCell.Tab.0.center/0.0.1536.816@0.0.1536.816" timestamp="1641282392111" />
+    <state width="1322" height="143" key="GridCell.Tab.0.center/0.0.1707.920@0.0.1707.920" timestamp="1634181350008" />
+    <state width="996" height="141" key="GridCell.Tab.0.left" timestamp="1641282392111">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state width="996" height="141" key="GridCell.Tab.0.left/0.0.1536.816@0.0.1536.816" timestamp="1641282392111" />
+    <state width="1322" height="143" key="GridCell.Tab.0.left/0.0.1707.920@0.0.1707.920" timestamp="1634181350008" />
+    <state width="996" height="141" key="GridCell.Tab.0.right" timestamp="1641282392111">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state width="996" height="141" key="GridCell.Tab.0.right/0.0.1536.816@0.0.1536.816" timestamp="1641282392111" />
+    <state width="1322" height="143" key="GridCell.Tab.0.right/0.0.1707.920@0.0.1707.920" timestamp="1634181350008" />
+    <state x="128" y="55" key="SettingsEditor" timestamp="1641281345777">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="128" y="55" key="SettingsEditor/0.0.1536.816@0.0.1536.816" timestamp="1641281345777" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/douban$testRe.coverage" NAME="testRe Coverage Results" MODIFIED="1583803109153" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/douban$spider1.coverage" NAME="spider1 Coverage Results" MODIFIED="1583817965319" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tt" />
+    <SUITE FILE_PATH="coverage/douban$testXwlt.coverage" NAME="testXwlt Coverage Results" MODIFIED="1583258760887" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/douban$t2.coverage" NAME="t2 Coverage Results" MODIFIED="1583229827476" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test2" />
+    <SUITE FILE_PATH="coverage/douban$testBs4.coverage" NAME="testBs4 Coverage Results" MODIFIED="1583248713126" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/douban$tt__1_.coverage" NAME="tt (1) Coverage Results" MODIFIED="1584676820419" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testTemp" />
+    <SUITE FILE_PATH="coverage/douban$spider.coverage" NAME="spider Coverage Results" MODIFIED="1583263158952" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/douban$tt.coverage" NAME="tt Coverage Results" MODIFIED="1584455946512" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/douban$t1.coverage" NAME="t1 Coverage Results" MODIFIED="1583229621255" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test1" />
+    <SUITE FILE_PATH="coverage/douban$testError.coverage" NAME="testError Coverage Results" MODIFIED="1584668168941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testTemp" />
+    <SUITE FILE_PATH="coverage/douban$testSqlite.coverage" NAME="testSqlite Coverage Results" MODIFIED="1583260919002" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/douban$testUrllib.coverage" NAME="testUrllib Coverage Results" MODIFIED="1583239890400" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+  </component>
+</project>

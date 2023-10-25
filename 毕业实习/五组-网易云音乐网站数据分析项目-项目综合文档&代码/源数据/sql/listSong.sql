@@ -1,0 +1,12 @@
+INSERT INTO `listSong` (`lid`, `lname`, `song`) VALUES ('10520166', '云音乐国电榜', 'Tropical Resolve @#$#@ [Drill] Central Cee Type Drill Beat \'\'Lemonade\'\' @#$#@ [Drill] Central Cee Type Drill Beat \'\'Somebody\'\'');
+INSERT INTO `listSong` (`lid`, `lname`, `song`) VALUES ('180106', 'UK排行榜周榜', 'Sprinter @#$#@ vampire @#$#@ Who Told You @#$#@ Miracle @#$#@ Giving Me @#$#@ Cruel Summer @#$#@ (It Goes Like) Nanana (Edit) @#$#@ Good Love @#$#@ Dancing is Healing @#$#@ Pakistan');
+INSERT INTO `listSong` (`lid`, `lname`, `song`) VALUES ('19723756', '飙升榜', 'WHOOSISHYT @#$#@ 全世界会唱的歌 @#$#@ 爱的回归线 (Live版) @#$#@ 雨爱 (Live版) @#$#@ 爱情转移·2023 @#$#@ 天天 @#$#@ 心 @#$#@ 你 @#$#@ 直到清晨黄昏（sample this） @#$#@ 苏珊');
+INSERT INTO `listSong` (`lid`, `lname`, `song`) VALUES ('1978921795', '云音乐电音榜', 'Sea Of Problems @#$#@ Time Stop @#$#@ I\'ll Do It (Sped Up Version) @#$#@ Daisuki @#$#@ Say It Right @#$#@ 不爱就算（whatever） @#$#@ Cheri Cheri Lady');
+INSERT INTO `listSong` (`lid`, `lname`, `song`) VALUES ('2884035', '原创榜', '变成星星飞走了 @#$#@ 永恒的烟火 @#$#@ 请别再给我那些答非所问 @#$#@ C级浪漫 @#$#@ 门 @#$#@ 嫁东风 @#$#@ 漂 @#$#@ 远别 @#$#@ RELAX(睿猎) @#$#@ 五号咖啡馆');
+INSERT INTO `listSong` (`lid`, `lname`, `song`) VALUES ('3778678', '热歌榜', '凄美地 @#$#@ 向云端 @#$#@ 予你 @#$#@ 笼 @#$#@ C级浪漫 @#$#@ 把回忆拼好给你 @#$#@ 我记得 @#$#@ 如果呢 @#$#@ 风驶过的声音是 @#$#@ 罗生门（Follow）');
+INSERT INTO `listSong` (`lid`, `lname`, `song`) VALUES ('3779629', '新歌榜', '笼 @#$#@ Strangers @#$#@ 爱的回归线 (Live版) @#$#@ 我想念 (Live版) @#$#@ C级浪漫 @#$#@ 雨爱 (Live版) @#$#@ 会魔法的老人 (LIVE版) @#$#@ 用情 (Live版) @#$#@ 爱情转移·2023 @#$#@ 算了');
+INSERT INTO `listSong` (`lid`, `lname`, `song`) VALUES ('5453912201', '黑胶VIP爱听榜', 'Letting Go @#$#@ 唯一 @#$#@ 天外来物 @#$#@ 开往早晨的午夜 @#$#@ 多远都要在一起 @#$#@ 爱人错过 @#$#@ 带我去找夜生活 @#$#@ 就让这大雨全都落下 @#$#@ 天若有情 @#$#@ Baby, Don\'t Cry (人鱼的眼泪)');
+INSERT INTO `listSong` (`lid`, `lname`, `song`) VALUES ('71384707', '云音乐古典榜', '');
+INSERT INTO `listSong` (`lid`, `lname`, `song`) VALUES ('71385702', '云音乐ACG榜', 'アイドル @#$#@ Da Capo @#$#@ メフィスト @#$#@ 我不曾忘记 @#$#@ 月を見ていた @#$#@ 絆ノ奇跡 @#$#@ なんでもないや（没什么大不了） @#$#@ Fly, My Wings @#$#@ Idol');
+INSERT INTO `listSong` (`lid`, `lname`, `song`) VALUES ('745956260', '云音乐韩语榜', 'Cupid – Twin Ver. (FIFTY FIFTY) – Sped Up Version @#$#@ Cupid @#$#@ Cupid (Twin Ver.) @#$#@ 꽃(FLOWER) @#$#@ 퀸카 (Queencard) @#$#@ Allergy @#$#@ All Night @#$#@ insomnia @#$#@ Spicy @#$#@ My Light');
+INSERT INTO `listSong` (`lid`, `lname`, `song`) VALUES ('991319590', '云音乐说唱榜', '向云端 @#$#@ 风驶过的声音是 @#$#@ 普通人生 @#$#@ 翠花 @#$#@ 诀爱·尽 (LIVE版) @#$#@ 想想就烦 @#$#@ 时空观影券 @#$#@ Reverse @#$#@ P.Y.T @#$#@ 一般的一天 (LIVE版)');

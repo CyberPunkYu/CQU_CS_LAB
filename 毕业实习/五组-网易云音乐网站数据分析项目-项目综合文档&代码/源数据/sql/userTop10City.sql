@@ -1,0 +1,10 @@
+INSERT INTO `userTop10City` (`cname`, `cemo`, `cnum`) VALUES ('内蒙古自治区', 5.55327, 9);
+INSERT INTO `userTop10City` (`cname`, `cemo`, `cnum`) VALUES ('北京市', 5.48267, 36);
+INSERT INTO `userTop10City` (`cname`, `cemo`, `cnum`) VALUES ('四川省', 5.47132, 37);
+INSERT INTO `userTop10City` (`cname`, `cemo`, `cnum`) VALUES ('天津市', 6.20486, 11);
+INSERT INTO `userTop10City` (`cname`, `cemo`, `cnum`) VALUES ('宁夏回族自治区', 5.91637, 2);
+INSERT INTO `userTop10City` (`cname`, `cemo`, `cnum`) VALUES ('安徽省', 5.65084, 18);
+INSERT INTO `userTop10City` (`cname`, `cemo`, `cnum`) VALUES ('广西壮族自治区', 5.54178, 14);
+INSERT INTO `userTop10City` (`cname`, `cemo`, `cnum`) VALUES ('湖南省', 5.57416, 24);
+INSERT INTO `userTop10City` (`cname`, `cemo`, `cnum`) VALUES ('甘肃省', 6.12744, 5);
+INSERT INTO `userTop10City` (`cname`, `cemo`, `cnum`) VALUES ('福建省', 5.43805, 17);

@@ -1,0 +1,9 @@
+ip: 192.168.47.128     gateway: 192.168.47.2
+
+os   user: cpy/root		pwd: cpy750429
+db   user: root			pwd: 12345678
+hive user: 
+
+
+本机
+ip：192.168.43.124   8910  8911

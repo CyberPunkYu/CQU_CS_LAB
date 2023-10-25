@@ -1,0 +1,12 @@
+INSERT INTO `listAllNum` (`lid`, `lname`, `cnum`, `pnum`, `bnum`, `mnum`) VALUES ('10520166', '云音乐国电榜', '231198', '10774', '89988416', '20');
+INSERT INTO `listAllNum` (`lid`, `lname`, `cnum`, `pnum`, `bnum`, `mnum`) VALUES ('180106', 'UK排行榜周榜', '288433', '22362', '144679440', '100');
+INSERT INTO `listAllNum` (`lid`, `lname`, `cnum`, `pnum`, `bnum`, `mnum`) VALUES ('19723756', '飙升榜', '4054157', '218513', '5575409664', '97');
+INSERT INTO `listAllNum` (`lid`, `lname`, `cnum`, `pnum`, `bnum`, `mnum`) VALUES ('1978921795', '云音乐电音榜', '1310610', '41785', '367250592', '49');
+INSERT INTO `listAllNum` (`lid`, `lname`, `cnum`, `pnum`, `bnum`, `mnum`) VALUES ('2884035', '原创榜', '712184', '12935', '567510720', '100');
+INSERT INTO `listAllNum` (`lid`, `lname`, `cnum`, `pnum`, `bnum`, `mnum`) VALUES ('3778678', '热歌榜', '11851283', '273325', '11559258112', '200');
+INSERT INTO `listAllNum` (`lid`, `lname`, `cnum`, `pnum`, `bnum`, `mnum`) VALUES ('3779629', '新歌榜', '2746882', '154231', '2828933120', '99');
+INSERT INTO `listAllNum` (`lid`, `lname`, `cnum`, `pnum`, `bnum`, `mnum`) VALUES ('5453912201', '黑胶VIP爱听榜', '1059438', '36020', '199228464', '100');
+INSERT INTO `listAllNum` (`lid`, `lname`, `cnum`, `pnum`, `bnum`, `mnum`) VALUES ('71384707', '云音乐古典榜', '428017', '4948', '67352688', '100');
+INSERT INTO `listAllNum` (`lid`, `lname`, `cnum`, `pnum`, `bnum`, `mnum`) VALUES ('71385702', '云音乐ACG榜', '236575', '20105', '77507080', '100');
+INSERT INTO `listAllNum` (`lid`, `lname`, `cnum`, `pnum`, `bnum`, `mnum`) VALUES ('745956260', '云音乐韩语榜', '236604', '12436', '105171992', '100');
+INSERT INTO `listAllNum` (`lid`, `lname`, `cnum`, `pnum`, `bnum`, `mnum`) VALUES ('991319590', '云音乐说唱榜', '742637', '16933', '414032096', '50');

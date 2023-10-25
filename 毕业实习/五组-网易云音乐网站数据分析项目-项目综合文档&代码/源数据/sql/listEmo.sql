@@ -1,0 +1,12 @@
+INSERT INTO `listEmo` (`lid`, `lname`, `emo`, `num`) VALUES ('10520166', '云音乐国电榜', '积极 稍积极 中性 稍消极 消极', '0 @#$#@ 0 @#$#@ 3 @#$#@ 0 @#$#@ 0');
+INSERT INTO `listEmo` (`lid`, `lname`, `emo`, `num`) VALUES ('180106', 'UK排行榜周榜', '积极 稍积极 中性 稍消极 消极', '0 @#$#@ 4 @#$#@ 6 @#$#@ 0 @#$#@ 0');
+INSERT INTO `listEmo` (`lid`, `lname`, `emo`, `num`) VALUES ('19723756', '飙升榜', '积极 稍积极 中性 稍消极 消极', '0 @#$#@ 4 @#$#@ 4 @#$#@ 2 @#$#@ 0');
+INSERT INTO `listEmo` (`lid`, `lname`, `emo`, `num`) VALUES ('1978921795', '云音乐电音榜', '积极 稍积极 中性 稍消极 消极', '0 @#$#@ 1 @#$#@ 3 @#$#@ 3 @#$#@ 0');
+INSERT INTO `listEmo` (`lid`, `lname`, `emo`, `num`) VALUES ('2884035', '原创榜', '积极 稍积极 中性 稍消极 消极', '0 @#$#@ 4 @#$#@ 4 @#$#@ 2 @#$#@ 0');
+INSERT INTO `listEmo` (`lid`, `lname`, `emo`, `num`) VALUES ('3778678', '热歌榜', '积极 稍积极 中性 稍消极 消极', '0 @#$#@ 0 @#$#@ 3 @#$#@ 7 @#$#@ 0');
+INSERT INTO `listEmo` (`lid`, `lname`, `emo`, `num`) VALUES ('3779629', '新歌榜', '积极 稍积极 中性 稍消极 消极', '0 @#$#@ 2 @#$#@ 5 @#$#@ 3 @#$#@ 0');
+INSERT INTO `listEmo` (`lid`, `lname`, `emo`, `num`) VALUES ('5453912201', '黑胶VIP爱听榜', '积极 稍积极 中性 稍消极 消极', '0 @#$#@ 0 @#$#@ 7 @#$#@ 3 @#$#@ 0');
+INSERT INTO `listEmo` (`lid`, `lname`, `emo`, `num`) VALUES ('71384707', '云音乐古典榜', '积极 稍积极 中性 稍消极 消极', '0 @#$#@ 0 @#$#@ 0 @#$#@ 0 @#$#@ 0');
+INSERT INTO `listEmo` (`lid`, `lname`, `emo`, `num`) VALUES ('71385702', '云音乐ACG榜', '积极 稍积极 中性 稍消极 消极', '0 @#$#@ 1 @#$#@ 6 @#$#@ 2 @#$#@ 0');
+INSERT INTO `listEmo` (`lid`, `lname`, `emo`, `num`) VALUES ('745956260', '云音乐韩语榜', '积极 稍积极 中性 稍消极 消极', '1 @#$#@ 4 @#$#@ 5 @#$#@ 0 @#$#@ 0');
+INSERT INTO `listEmo` (`lid`, `lname`, `emo`, `num`) VALUES ('991319590', '云音乐说唱榜', '积极 稍积极 中性 稍消极 消极', '0 @#$#@ 0 @#$#@ 6 @#$#@ 4 @#$#@ 0');
