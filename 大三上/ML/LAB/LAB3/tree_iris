@@ -1,0 +1,21 @@
+// 测试
+digraph pic {
+	graph [rankdir=TB]
+	petal_width1 [label=petal_width]
+	sepal_length1 [label="class 0"]
+	petal_width2 [label=petal_width]
+	petal_width3 [label=petal_width]
+	sepal_width1 [label="class 1"]
+	sepal_width2 [label=sepal_width]
+	sepal_width3 [label="class 1"]
+	sepal_width4 [label="class 1"]
+	petal_length1 [label="class 2"]
+	petal_width1 -> sepal_length1 [label="<1.0"]
+	petal_width1 -> petal_width2 [label=">1.0"]
+	petal_width2 -> petal_width3 [label="<1.8"]
+	petal_width3 -> sepal_width1 [label="<1.5"]
+	petal_width3 -> sepal_width2 [label=">1.5"]
+	sepal_width2 -> sepal_width3 [label="<3.0"]
+	sepal_width2 -> sepal_width4 [label=">3.0"]
+	petal_width2 -> petal_length1 [label=">1.8"]
+}

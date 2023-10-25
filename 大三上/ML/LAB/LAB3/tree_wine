@@ -1,0 +1,21 @@
+// 测试
+digraph pic {
+	graph [rankdir=TB]
+	sulphates1 [label=sulphates]
+	"volatile acidity1" [label="class 1"]
+	"total sulfur dioxide1" [label="total sulfur dioxide"]
+	"citric acid1" [label="class 2"]
+	"volatile acidity2" [label="volatile acidity"]
+	"volatile acidity3" [label="class 1"]
+	"fixed acidity1" [label="fixed acidity"]
+	"volatile acidity4" [label="class 1"]
+	"fixed acidity2" [label="class 0"]
+	sulphates1 -> "volatile acidity1" [label="<3.4800000000000004"]
+	sulphates1 -> "total sulfur dioxide1" [label=">3.4800000000000004"]
+	"total sulfur dioxide1" -> "citric acid1" [label="<1.59"]
+	"total sulfur dioxide1" -> "volatile acidity2" [label=">1.59"]
+	"volatile acidity2" -> "volatile acidity3" [label="<1.315"]
+	"volatile acidity2" -> "fixed acidity1" [label=">1.315"]
+	"fixed acidity1" -> "volatile acidity4" [label="<12.75"]
+	"fixed acidity1" -> "fixed acidity2" [label=">12.75"]
+}
