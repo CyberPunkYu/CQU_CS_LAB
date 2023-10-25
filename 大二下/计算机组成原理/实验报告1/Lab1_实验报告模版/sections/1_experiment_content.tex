@@ -1,0 +1,43 @@
+\section{实验内容}
+\subsection{ALU设计实验}
+实验要求实现以下算术运算功能，其对应的控制码及功能如下：
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{cccc}
+        \hline
+         F$_{2:0}$ & 功能 & F$_{2:0}$ & 功能  \\
+         \hline
+         000 & A + B(Unsigned) & 100 & $\overline{A}$ \\
+         001 & A - B & \textcolor{red}{\textit{\textbf{101}}} & \textcolor{red}{\textit{\textbf{SLT}}}\\
+         010 & A AND B & 110 & 未使用\\
+         011 & A OR B  & 111 & 未使用\\
+         \hline
+    \end{tabular}
+    \caption{算数运算控制码及功能}
+    \label{tab:opcode}
+\end{table}
+
+\textbf{实验要求：}
+\begin{enumerate}
+    \item 根据ALU原理图，使用Verilog语言定义ALU模块，其中输入输出端口参考实验原理，运算指令码长度为[2:0]。
+    \item 内置一个32位num2（值为32h’01）作为输入到运算器端口A；
+    \item 将sw0-sw7输入到num1,经过无符号扩展 至32位后，输入到运算器的端口B；
+    \item 运算器支持“加、减、与、或、非”5种运算，需要3位（8个操作）。将sw15-sw14输入到op作为运算器的控制信号；
+    \item 实现SLT功能。
+    \item 将计算32位结果s显示到七段数码管(16进制)。
+    \item 验证表1中所有功能。
+    \item 给出RTL源程序（.v文件）
+
+\end{enumerate}
+
+\subsection{流水线实验}
+
+本次实验为仿真实验，设计完成后仅需进行\textbf{行为仿真}。
+
+\textbf{实验要求：}
+
+\begin{enumerate}
+    \item 实现4级流水线8bit全加器，需带有流水线暂停和刷新；
+    \item 模拟流水线暂停，仿真时控制10周期后暂停流水线2周期（第2级），流水线恢复流动；
+    \item 模拟流水线刷新，仿真时控制15周期时流水线刷新（第3级）。
+\end{enumerate}

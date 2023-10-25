@@ -1,0 +1,199 @@
+\appendix
+\section{Datapath代码}
+\begin{lstlisting}[language=Verilog]
+    module datapath(
+        input clk, rst,
+        //////////////////fetch//////////////////
+        output [31:0] pcF,
+        input  [31:0] instrF,
+        //////////////////decode/////////////////
+        input pcsrcD, branchD, jumpD,
+        output equalD,
+        output [5:0] opD, functD,
+        //////////////////execute///////////////////////
+        input memtoregE, alusrcE, regdstE, regwriteE,
+        input [2:0] alucontrolE,
+        output flushE,
+        ///////////////////memory////////////////////
+        input memtoregM, regwriteM,
+        output [31:0] aluoutM,writedataM,
+        input  [31:0] readdataM,
+        ///////////////////write back/////////////////
+        input memtoregW, regwriteW
+    );
+        //////////////////fetch//////////////////
+        wire stallF;
+        wire [31:0] pcnextFD,pcnextbrFD,pc4F,pcbranchD;
+        
+        pc #(32) pcreg(clk, rst, ~stallF, pcnextFD, pcF);
+        adder pcadder1(pcF, 32'b100, pc4F);
+        //////////////////decode/////////////////
+        wire [31:0] pc4D,instrD;
+        wire forwardAD,forwardBD;
+        wire [4:0] rsD,rtD,rdD;
+        wire flushD,stallD; 
+        wire [31:0] sign_immD,sign_imm_sl2D;
+        wire [31:0] srcAD,srcA2D,srcBD,srcB2D;
+        
+        assign opD    = instrD[31:26];
+        assign functD = instrD[5:0];
+        assign rsD    = instrD[25:21];
+        assign rtD    = instrD[20:16];
+        assign rdD    = instrD[15:11];
+        assign equalD = (srcA2D == srcB2D)? 1:0;
+        
+        signext signext(instrD[15:0], sign_immD);
+        sl2     sl2(sign_immD, sign_imm_sl2D);
+        adder   pcadder2(pc4D, sign_imm_sl2D, pcbranchD);
+        
+        mux2 #(32) pcmux1(pc4F, pcbranchD, pcsrcD, pcnextbrFD); 
+        mux2 #(32) pcmux2(pcnextbrFD, {pc4D[31:28],instrD[25:0],2'b00}, jumpD, pcnextFD);
+        mux2 #(32) forwardamux(srcAD,aluoutM,forwardAD,srcA2D);
+        mux2 #(32) forwardbmux(srcBD,aluoutM,forwardBD,srcB2D);
+        flopenr #(32)  r1D(clk, rst, ~stallD, pc4F, pc4D);
+        flopenrc #(32) r2D(clk, rst, ~stallD, flushD, instrF, instrD);
+        //////////////////execute/////////////////
+        wire [1:0] forwardAE,forwardBE;
+        wire [4:0] rsE,rtE,rdE,writeregE;
+        wire [31:0] sign_immE,srcAE,srcA2E,srcBE,srcB2E,srcB3E,aluoutE;
+        
+        mux2 #(32) srcb(srcB2E, sign_immE, alusrcE, srcB3E);
+        mux2 #(5)  wa(rtE, rdE, regdstE, writeregE);
+        alu        alu(srcA2E, srcB3E, alucontrolE, aluoutE);
+        
+        floprc #(32) r1E(clk,rst,flushE,srcAD,srcAE);
+        floprc #(32) r2E(clk,rst,flushE,srcBD,srcBE);
+        floprc #(32) r3E(clk,rst,flushE,sign_immD,sign_immE);
+        floprc #(5)  r4E(clk,rst,flushE,rsD,rsE);
+        floprc #(5)  r5E(clk,rst,flushE,rtD,rtE);
+        floprc #(5)  r6E(clk,rst,flushE,rdD,rdE);
+        //////////////////memory/////////////////
+        wire [4:0] writeregM;
+        
+        flopr #(32) r1M(clk,rst,srcB2E,writedataM);
+        flopr #(32) r2M(clk,rst,aluoutE,aluoutM);
+        flopr #(5)  r3M(clk,rst,writeregE,writeregM);
+        /////////////////write back/////////////////
+        wire [4:0] writeregW;
+        wire [31:0] aluoutW,readdataW,resultW;
+        
+        mux2 #(32) resmux(aluoutW,readdataW,memtoregW,resultW);
+        mux3 #(32) formux1(srcAE,resultW,aluoutM,forwardAE,srcA2E);
+        mux3 #(32) formux2(srcBE,resultW,aluoutM,forwardBE,srcB2E);
+        flopr #(32) r1W(clk,rst,aluoutM,aluoutW);
+        flopr #(32) r2W(clk,rst,readdataM,readdataW);
+        flopr #(5)  r3W(clk,rst,writeregM,writeregW);
+        
+        regfile rf(clk,regwriteW,rsD,rtD,writeregW,resultW,srcAD,srcBD);
+        ////////////////hazard////////////////
+        hazard h(
+            //////////////////fetch//////////////////
+            stallF,
+            //////////////////decode/////////////////
+            rsD,rtD,branchD,forwardAD,forwardBD,stallD,
+            //////////////////execute////////////////
+            rsE,rtE,writeregE,regwriteE,memtoregE,forwardAE,forwardBE,flushE,
+            //////////////////memory/////////////////
+            writeregM,regwriteM,memtoregM,
+            /////////////////write back//////////////
+            writeregW,regwriteW
+        );
+    endmodule
+\end{lstlisting}
+
+\section{Hazard代码}
+\begin{lstlisting}[language=Verilog]
+    module hazard(
+        //////////////fetch////////////////
+        output stallF,
+        //////////////decode///////////////
+        input [4:0] rsD,rtD,
+        input branchD,
+        output forwardAD,forwardBD,stallD,
+        /////////////execute///////////////
+        input [4:0] rsE,rtE,writeregE,
+        input regwriteE,memtoregE,
+        output reg [1:0] forwardAE,forwardBE,
+        output flushE,
+        //////////////memory///////////////
+        input [4:0] writeregM,
+        input regwriteM,memtoregM,
+        ////////// //write back/////////////
+        input [4:0] writeregW,
+        input regwriteW
+    );
+        
+        ///////////////control/////////////////
+        wire lwstallD,branchstallD;
+        assign forwardAD = (rsD != 0 & rsD == writeregM & regwriteM);
+        assign forwardBD = (rtD != 0 & rtD == writeregM & regwriteM);
+        ///////////////data forward///////////////////
+        always @(*)
+           begin
+                forwardAE = 2'b00;
+                forwardBE = 2'b00;
+                if(rsE != 0) 
+                    begin
+                        if(rsE == writeregM & regwriteM) forwardAE = 2'b10;
+                        else if(rsE == writeregW & regwriteW) forwardAE = 2'b01;
+                    end
+                if(rtE != 0)
+                    begin
+                        if(rtE == writeregM & regwriteM) forwardBE = 2'b10;
+                        else if(rtE == writeregW & regwriteW) forwardBE = 2'b01;
+                    end
+            end
+        //////////////////data stop//////////////////
+        assign lwstallD = memtoregE & (rtE == rsD | rtE == rtD);
+        assign branchstallD = branchD &
+                    (regwriteE & 
+                    (writeregE == rsD | writeregE == rtD) |
+                    memtoregM &
+                    (writeregM == rsD | writeregM == rtD));
+        assign  stallD = lwstallD | branchstallD;
+        assign  stallF = stallD;
+        assign  flushE = stallD;
+    endmodule
+\end{lstlisting}
+
+\section{Controller代码}
+\begin{lstlisting}[language=Verilog]
+    module controller(
+        input clk,rst,
+        /////////////////decode/////////////////
+        input [5:0] opD,functD,
+        output pcsrcD,branchD,equalD,jumpD,
+        /////////////////execute////////////////
+        input flushE,
+        output memtoregE,alusrcE,regdstE,regwriteE,	
+        output [2:0] alucontrolE,
+        /////////////////memory//////////////////
+        output memtoregM,memwriteM,regwriteM,
+        /////////////////write back//////////////
+        output memtoregW,regwriteW
+    );
+    
+        wire[1:0] aluopD;
+        wire memtoregD,memwriteD,alusrcD,regdstD,regwriteD;
+        wire[2:0] alucontrolD;
+    
+        wire memwriteE;
+        maindec maindec(opD,memtoregD,memwriteD,branchD,alusrcD,regdstD,regwriteD,jumpD,aluopD);
+        aludec  aludec(functD,aluopD,alucontrolD);
+        assign pcsrcD = branchD & equalD;
+        
+        floprc #(1) r1E(clk,rst,flushE,memtoregD,memtoregE);
+        floprc #(1) r2E(clk,rst,flushE,memwriteD,memwriteE);
+        floprc #(1) r3E(clk,rst,flushE,alusrcD,alusrcE);
+        floprc #(1) r4E(clk,rst,flushE,regdstD,regdstE);
+        floprc #(1) r5E(clk,rst,flushE,regwriteD,regwriteE);
+        floprc #(3) r6E(clk,rst,flushE,alucontrolD,alucontrolE);
+        
+        flopr #(1) r1M(clk,rst,memtoregE,memtoregM);
+        flopr #(1) r2M(clk,rst,memwriteE,memwriteM);
+        flopr #(1) r3M(clk,rst,regwriteE,regwriteM);
+        
+        flopr #(1) r1W(clk,rst,memtoregM,memtoregW);
+        flopr #(1) r2W(clk,rst,regwriteM,regwriteW);
+    endmodule
+\end{lstlisting}

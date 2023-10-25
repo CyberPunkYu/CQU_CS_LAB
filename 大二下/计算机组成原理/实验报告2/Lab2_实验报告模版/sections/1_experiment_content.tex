@@ -1,0 +1,18 @@
+\section{实验内容}
+\begin{enumerate}
+    \item PC。D触发器结构，用于储存PC(一个周期)。需\textcolor{red}{实现2个输入}，分别为\textit{clk, rst},分别连接时钟和复位信号；需\textcolor{red}{实现2个输出}，分别为\textit{pc, inst\_ce}, 分别连接指令存储器的\textit{addra, ena}端口。其中\textit{addra}位数依据coe文件中指令数定义；
+    \item 加法器。用于计算下一条指令地址，需\textcolor{red}{实现2个输入，1个输出}，输入值分别为当前指令地址\textit{PC、32’h4}；
+    \item Controller。其中包含两部分：
+    \begin{enumerate}
+        \item main\_decoder。负责判断指令类型，并生成相应的控制信号。需\textcolor{red}{实现1个输入}，为指令inst的高6位\textit{op}，输出分为2部分，\textcolor{epubblue}{控制信号}有多个，可作为多个输出，也作为一个多位输出，具体参照参考指导书进行设计；\textit{aluop}，传输至alu\_decoder，使alu\_decoder配合\textit{inst}低6位\textit{funct}，进行ALU模块控制信号的译码。
+        \item alu\_decoder。负责ALU模块控制信号的译码。需\textcolor{red}{实现2个输入，1个输出}，输入分别为\textit{funct, aluop}；输出位\textit{alucontrol}信号。
+        \item 除上述两个组件，需设计controller文件调用两个decoder，\textcolor{epubblue}{对应实现\textit{op,funct}输入信号，并传入调用模块；对应实现控制信号及\textit{alucontrol}，并连接至调用模块相应端口}。
+    \end{enumerate}
+
+    \item 指令存储器。使用Block Memory Generator IP构造。(参考指导书)
+    
+    \textcolor{red}{ 注意：	Basic中Generate address interface with 32 bits 选项不选中；PortA Options中 Enable Port Type 选择为 Use ENA Pin}
+    \item 时钟分频器。将板载100Mhz频率降低为1hz，连接PC、指令存储器时钟信号clk。(参考数字逻辑实验)
+    
+    \textcolor{red}{注意：Xilinx Clocking Wizard IP可分的最低频率为4.687Mhz，因而只能使用自实现分频模块进行分频}
+\end{enumerate}

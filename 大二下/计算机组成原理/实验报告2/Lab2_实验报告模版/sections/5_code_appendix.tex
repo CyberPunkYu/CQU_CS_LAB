@@ -1,0 +1,147 @@
+\newpage
+\appendix
+\section{Controller代码}
+\begin{lstlisting}[language=Verilog]
+    module controller(
+    input [5:0] op,
+    input [5:0] funct,
+    output jump,
+    output branch,
+    output alusrc,
+    output memwrite,
+    output memtoreg,
+    output regwrite,
+    output regdst,
+    output pcsrc,
+    output [2:0] alucontrol
+    );
+    wire [1:0] aluop;
+main_dec t2(op,jump,branch,alusrc,memwrite,memtoreg,regwrite,regdst,pcsrc,aluop);
+alu_dec  t1(funct,aluop,alucontrol);
+endmodule
+\end{lstlisting}
+
+\section{alu\_dec代码}
+\begin{lstlisting}[language=Verilog]
+    module alu_dec(
+    input  [5:0] funct,
+    input  [1:0] aluop,
+    output [2:0] alucontrol
+    );
+assign alucontrol = ( aluop == 2'b00 ) ? 3'b010 : 
+                    ( aluop == 2'b01 ) ? 3'b110 : 
+                    ( aluop == 2'b10 && funct == 6'b100000 ) ? 3'b010 : 
+                    ( aluop == 2'b10 && funct == 6'b100010 ) ? 3'b110 : 
+                    ( aluop == 2'b10 && funct == 6'b100100 ) ? 3'b000 : 
+                    ( aluop == 2'b10 && funct == 6'b100101 ) ? 3'b001 :
+                    ( aluop == 2'b10 && funct == 6'b101010 ) ? 3'b111 :
+                    3'b000;
+endmodule
+\end{lstlisting}
+
+\section{main\_dec代码}
+\begin{lstlisting}[language=Verilog]
+    module main_dec(
+    input [5:0] op,
+    output jump,
+    output branch,
+    output alusrc,
+    output memwrite,
+    output memtoreg,
+    output regwrite,
+    output regdst,
+    output pcsrc,
+    output reg [1:0] aluop
+);
+    reg zero = 0;  //unknown till now, so pcsrc is always 0
+    reg [7:0] sign;
+    assign pcsrc = branch & zero;
+    assign {regwrite,regdst,memtoreg,memwrite,alusrc,branch,jump,pcsrc} = sign;
+always @(*)
+    begin
+        case(op)
+            6'b000_000:
+                begin
+                    sign  <= 10'b1100_0000;
+                    aluop <= 2'b10;
+//                    regwrite = 1;regdst = 1;memtoreg = 0;memwrite = 0;
+//                    alusrc = 0;branch = 0;aluop = 2'b10;jump = 0;pcsrc = branch&unknown;
+                end
+            6'b100_011:
+                begin
+                    sign  <= 10'b1010_1000;
+                    aluop <= 2'b00;
+//                    regwrite = 1;regdst = 0;memtoreg = 1;memwrite = 0;
+//                    alusrc = 1;branch = 0;aluop = 2'b00;jump = 0;pcsrc = branch&unknown;
+                end
+            6'b101_011:
+                begin
+                    sign  <= 10'b0001_1000;
+                    aluop <= 2'b00;
+//                    regwrite = 0;regdst = 0;memtoreg = 0;memwrite = 1;
+//                    alusrc = 1;branch = 0;aluop = 2'b00;jump = 0;pcsrc = branch&unknown;
+                end
+            6'b000_100:
+                begin
+                    sign  <= 10'b0000_0100;
+                    aluop <= 2'b01;
+//                    regwrite = 0;regdst = 0;memtoreg = 0;memwrite = 0;
+//                    alusrc = 0;branch = 1;aluop = 2'b01;jump = 0;pcsrc = branch&unknown;
+                end
+            6'b001_000:
+                begin
+                    sign  <= 10'b1000_1000;
+                    aluop <= 2'b00;
+//                    regwrite = 1;regdst = 0;memtoreg = 0;memwrite = 0;
+//                    alusrc = 1;branch = 0;aluop = 2'b00;jump = 0;pcsrc = branch&unknown;
+                end
+            6'b000_010:
+                begin
+                    sign  <= 10'b0000_0010;
+                    aluop <= 2'b10;
+//                    regwrite = 0;regdst = 0;memtoreg = 0;memwrite = 0;
+//                    alusrc = 0;branch = 0;aluop = 2'b10;jump = 1;pcsrc = branch&unknown;
+                end
+            default:
+                begin
+                    sign <= 10'b0000_0000_00;
+                    aluop <= 2'b00;
+//                    regwrite = 0;regdst = 0;memtoreg = 0;memwrite = 0;
+//                    alusrc = 0;branch = 0;aluop = 2'b00;jump = 0;pcsrc = branch&unknown;
+                end
+        endcase
+    end
+endmodule
+\end{lstlisting}
+
+\section{top代码}
+\begin{lstlisting}[language=Verilog]
+    module top(
+    input clk,
+    input rst,
+    output jump,
+    output branch,
+    output alusrc,
+    output memwrite,
+    output memtoreg,
+    output regwrite,
+    output regdst,
+    output pcsrc,
+    output [2:0] alucontrol,
+    output [6:0] seg,
+    output [7:0] ans
+);
+    wire clk_hz;
+    wire [31:0] addr;
+    wire [31:0] addr_4;
+    wire [31:0] instr;
+    wire [31:0] word_addr;
+    assign word_addr = addr >> 2;
+clk_div div(clk,clk_hz);    //clk div
+PC p1(clk_hz,rst,addr_4,addr);     //program counter
+pc_sum p2(addr,32'b100,addr_4); //pc adder
+RAM p3(clk_hz,word_addr,instr);    //ram
+display dis(clk,rst,instr,seg,ans); 
+controller ctr(instr[31:26],instr[5:0],jump,branch,alusrc,memwrite,memtoreg,regwrite,regdst,pcsrc,alucontrol);
+endmodule
+\end{lstlisting}

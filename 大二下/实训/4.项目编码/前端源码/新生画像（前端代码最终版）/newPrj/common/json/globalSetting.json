@@ -1,0 +1,5 @@
+{
+	"API_SITE_STU":"http://122.9.143.127:8086/api/student",
+	"API_SITE_INFO":"http://122.9.143.127:8086/api/info",
+	"TIME_OUT":20000
+}

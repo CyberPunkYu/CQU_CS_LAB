@@ -1,0 +1,58 @@
+\appendix
+\section{Datapath代码}
+\begin{lstlisting}[language=Verilog]
+    module datapath(
+        input clk,
+        input reset,
+        input memtoreg,
+        input pcsrc,
+        input branch,
+        input alusrc,
+        input regdst,
+        input regwrite,
+        input jump,
+        input [2:0]alucontrol,
+        output overflow,
+        output zero,
+        output [31:0] pc, //output pc to inst_ram
+        input  [31:0] inst,
+        output [31:0] aluout,
+        output [31:0] writedata,//write for data_mem
+        input  [31:0] readdata //read from data_mem
+        );
+        
+        wire [31:0] pc4;  //pc + 4
+        wire [31:0] pc_branch; //branch pc
+        wire [31:0] pc_next; // real next pc
+        wire [31:0] real_pc; //branch and jump
+        
+        wire [31:0] ext_imm; //after extension
+        wire [31:0] imm_sl2; //after left 2
+        
+        wire [31:0] result; //real writedata
+        wire [31:0] srcB;  //alu operand B
+        wire [31:0] srcA;  //alu operand A === RD1
+        wire [4:0]  writereg;    //write address
+        
+        assign pcsrc = branch & zero;
+    
+        //////////////////////mux//////////////////////////
+        mux2 a3_mux(inst[20:16], inst[15:11], regdst, writereg);
+        mux2 wd_mux(aluout, readdata, memtoreg, result);
+        mux2 srcB_mux(writedata, ext_imm, alusrc, srcB);
+        mux2 pc1_mux(pc4, pc_branch, pcsrc, pc_next);
+        mux2 pc2_mux(pc_next, {pc4[31:28] , inst[25:0] , 2'b00}, jump, real_pc);
+        //////////////////////pc///////////////////////////
+        pc counter(clk, reset, real_pc, pc);
+        adder pcadder(pc, 32'b100, pc4);   //default add 4
+        adder branchadder(imm_sl2, pc4, pc_branch);
+        ///////////////////register file///////////////////
+        regfile regs(clk, regwrite, inst[25:21], inst[20:16], writereg, result, srcA, writedata);
+        ///////////////////signext_imm/////////////////////
+        signext sign(inst[15:0], ext_imm);
+        /////////////////////sl2///////////////////////////
+        sl2 s1(ext_imm, imm_sl2);
+        //////////////////////alu//////////////////////////
+        alu al(srcA, srcB, alucontrol, zero, overflow, aluout);  //input aluout to data_ram to get readdata
+    endmodule
+\end{lstlisting}

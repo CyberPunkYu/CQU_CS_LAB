@@ -1,0 +1,85 @@
+\section{实验设计}
+
+\subsection{ALU}\label{sub:alu}
+
+\subsubsection{功能描述}
+{在optional code的控制下，输入的8位操作数A能在该算数逻辑单元中与内置操作数B进行加、减、与、或、非和SLT的运算。}
+
+\subsubsection{接口定义}
+\begin{table}[htp]
+\caption{接口定义模版}
+\begin{center}
+	\begin{tabular}{lllp{6cm}}
+	\hline
+	\textbf{信号名} & \textbf{方向} & \textbf{位宽} & \textbf{功能描述}\\ \hline
+	clk & Input & 1-bit & 时钟信号 \\
+	reset & Input & 1-bit & 分时复用重置 \\
+	num1 & Input & 8-bit & 操作数A \\
+	op & Input & 3-bit & operation code 000表示加法，001表示减法，010表示与，011表示或，100表示非，101表示ALT\\
+	seg & Output & 7-bit & 七段数码管选通 \\
+	ans & Output & 8-bit & 八个数码管显示运算结果 \\
+	\hline
+	\end{tabular}
+\end{center}
+\end{table}
+
+\subsubsection{逻辑控制}{\begin{enumerate}
+\item ALU的设计采用always实现组合逻辑。通过op来控制ALU实现不同运算功能。
+其中op通过sw[15:13]控制，num1通过sw[7:0]控制。
+\item 输入八位num1后，会将该八位操作数无符号拓展为32位，再输入ALU进行运算。
+\item 七段数码管使用时序逻辑方法，采取分时复用使运算结果显示到八个七段数码管上。
+\end{enumerate}}
+\subsection{有阻塞4级8bit全加器}\label{sub:ctl}
+
+\subsubsection{功能描述}
+实现 4 级流水线 32bit 全加器，每一级进行 8bit 加法运算，带有各级流水线暂停和刷新。
+
+\newpage
+\subsubsection{接口定义}
+\begin{table}[htp]
+\caption{接口定义}
+\begin{center}
+	\begin{tabular}{lllp{8cm}}
+	\hline
+	\textbf{信号名} & \textbf{方向} & \textbf{位宽} & \textbf{功能描述}\\ \hline
+	clk    & Input & 1-bit  & 时钟信号 \\
+	a  & Input & 32-bit & 操作数A \\
+	b  & Input & 32-bit & 操作数B \\
+	cin   & Input & 1-bit  & 该加法器初始进位信号 \\
+	rst   & Input & 1-bit  & 全局重置信号 \\
+	validin & Input & 1-bit  & 一级流水线接受新操作数信号 \\
+	out\_allowin & Input & 1-bit & 四级流水线输出最终运算结果信号 \\
+	pipeX\_ready\_go & Input & 1-bit & 描述第X级的状态，1表示第X级的处理任务已经完成，可以传给X+1级\\
+	fresh\_X & Input & 1-bit & 各级流水线刷新信号 \\
+	sum1 & Output & 8-bit  & 一级流水线运算结果\\
+	sum2 & Output & 16-bit & 二级流水线运算结果\\
+	sum3 & Output & 24-bit & 三级流水线运算结果\\
+	sum4 & Output & 32-bit & 四级流水线运算结果(最终结果)\\
+	validout & Output & 1-bit & 1代表最终输出结果有效 \\
+	cout & Output & 1-bit  & 该加法器是否产生进位\\
+	\hline
+	\end{tabular}
+\end{center}
+\end{table}
+
+\subsubsection{逻辑控制}
+\begin{enumerate}
+    \item 采用时序逻辑控制整个加法器。各级流水线有rst和fresh两个信号（高电平有效）用于各级流水线的重置和刷新。
+    \item 我们将32位相加分为四次进行，即每次相加8位，然后用寄存器存储每次相加后的结果、进位情况。其中cout来存储是否进位，sum1、sum2、sum3、sum4存储每次累加后的结果，a/b\_X储存上一级参与运算的操作数。
+    \item pipeX\_allowin = !pipeX\_valid || pipeX\_ready\_go && pipeX+1\_allowin,pipe1只有当pipe1的值赋给pipe2或者pipe1数值为无效的时候才允许被赋值。
+    \item 在一级流水线中，首先判断rst信号是否有效，有效则置零；其次判断是否允许被赋值，即pipeX\_allowin是否有效，若pipeX\_allowin有效且刷新信号无效，再去判断下一级流水线是否能够接受数据，若可以，则这一级流水线的工作才结束。
+\end{enumerate}
+\begin{table}[htp]
+	\caption{逻辑控制}
+	\begin{center}
+		\begin{tabular}{lllp{8cm}}
+		\hline
+		\textbf{信号名}  & \textbf{位宽} & \textbf{功能描述}\\ \hline
+		carry\_X & 1-bit & 各级流水线进位情况 \\
+		pipeX\_valid & 1-bit & 当前级是否存在有效的数据，高有效\\
+		pipeX\_allowin & 1-bit & 第X级传给第X-1级的状态，是否可以接收上一级的数据 \\
+		pipeX\_to\_pipeX+1\_valid & 1-bit & 从第X级传递给第X+1级，1表示下一时刻第X级有数据传递给第X+1级 \\
+		\hline
+		\end{tabular}
+	\end{center}
+	\end{table}

@@ -1,0 +1,172 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/login",			//登录页面
+			"style": {
+				"navigationBarTitleText": "登录",
+				"enablePullDownRefresh": true,
+				"app-plus":{
+					"titleNView": false
+				}
+			}
+		},
+		{
+			"path": "pages/index/navigation/navigation_homepage",		//导航页面
+			"style": {
+				"navigationBarTitleText": "首页",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/index/navigation/personalInfoCenter",		//个人中心
+			"style": {
+				"navigationBarTitleText": "个人中心",
+				"enablePullDownRefresh": true
+			}
+		},
+		
+		{
+			"path": "pages/index/navigation/navigation_campus",		//导航页面_校园
+			"style": {
+				"navigationBarTitleText": "校园",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/index/reportProgress",	//报道进度
+			"style": {
+				"navigationBarTitleText": "报到进度",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/index/mapSearch",	//地图
+			"style": {
+				"navigationBarTitleText": "校园地图",
+				"enablePullDownRefresh": true
+			}
+		},
+		
+		{
+			"path": "pages/index/infoSubmission",		//信息表单提交
+			"style": {
+				"navigationBarTitleText": "信息录入",
+				"enablePullDownRefresh": true
+			}
+		},
+		
+		{
+			"path": "pages/index/hometownDistribution",		//籍贯分布
+			"style": {
+				"navigationBarTitleText": "籍贯分布",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/index/familyName",		//姓氏分布
+			"style": {
+				"navigationBarTitleText": "姓氏分布",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/index/ageDistribution",			//年龄分布				
+			"style": {
+				"navigationBarTitleText": "年龄分布",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/index/genderDistribution",		//性别分布				
+			"style": {
+				"navigationBarTitleText": "性别分布",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/index/majorDistribution",	//专业分布				
+			"style": {
+				"navigationBarTitleText": "专业分布",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/index/passwordEditing",		//修改密码页面				
+			"style": {
+				"navigationBarTitleText": "修改密码",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/index/phone_number",		//常用电话
+			"style": {
+				"navigationBarTitleText": "常用电话",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/index/clubListing",		//社团
+			"style": {
+				"navigationBarTitleText": "社团信息",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/index/reportProgress",		//报道进度				
+			"style": {
+				"navigationBarTitleText": "报到进度",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/index/warningList",			//注意事项界面				
+			"style": {
+				"navigationBarTitleText": "注意事项",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/index/infoRevision",			//更改信息
+			"style": {
+				"navigationBarTitleText": "更改信息",
+				"enablePullDownRefresh": true
+			}
+		}
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "",
+		"navigationBarBackgroundColor": "#5555ff",
+		"backgroundColor": "#F8F8F8",
+		"navigationStyle": "default",		
+		"enablePullDownRefresh":true
+	},
+	"uniIdRouter": {},
+	
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#5555ff",
+		"borderStyle": "black",
+		"backgroundColor": "#f8f8f5",
+		"list": [
+			{
+				"pagePath": "pages/index/navigation/navigation_homepage",
+				"iconPath": "static/indexIcon/grid.png",
+				"selectedIconPath": "static/indexIcon/grid-fill.png",
+				"text": "首页"
+			}, 
+			{
+				"pagePath": "pages/index/navigation/navigation_campus",
+				"iconPath": "static/indexIcon/eye.png",
+				"selectedIconPath": "static/indexIcon/eye-fill.png",
+				"text": "校园"
+			}, 
+			{
+				"pagePath": "pages/index/navigation/personalInfoCenter",
+				"iconPath": "static/indexIcon/person.png",
+				"selectedIconPath": "static/indexIcon/person-fill.png",
+				"text": "个人中心"
+			}
+		]
+	}
+}

@@ -1,0 +1,100 @@
+\newpage
+\appendix
+\section{ALU代码}
+\begin{lstlisting}[language=Verilog]
+module ALU(num1,op,ans);
+    input [7:0] num1; //operand A
+    input [2:0] op;   //Operation code
+    output reg [31:0] ans; //Operation result
+    wire signed [31:0] num2 = 32'h01;  //num2 value is built-in 1
+    wire signed [31:0] num1_32 = {{24{1'b0}},num1};  //unsigned extension to 32-bit operand A
+    always@(*)
+        begin
+            case(op)
+                3'b000  : ans = num1_32 + num2 ;
+                3'b001  : ans = num1_32 - num2 ;
+                3'b010  : ans = num1_32 & num2 ;
+                3'b011  : ans = num1_32 | num2 ;
+                3'b100  : ans = ~ num1_32 ;
+                3'b101  : ans = num1_32 < num2;
+                default : ans = 32 'h00000000 ;  //Default is 0
+            endcase
+         end
+endmodule
+\end{lstlisting}
+
+\section{8bit全加器代码}
+\begin{lstlisting}[language=Verilog]
+    module stallable_pipeline_adder(
+        input cin, clk, rst,
+        input [31:0] a, b,
+        input validin, out_allowin,
+        input pipe1_ready_go, pipe2_ready_go, pipe3_ready_go, pipe4_ready_go,
+        input fresh_1, fresh_2, fresh_3, fresh_4,
+        output validout, cout,
+        output [31:0] result,
+        output reg [7:0] sum1,
+        output reg [15:0] sum2,
+        output reg [23:0] sum3,
+        output reg [31:0] sum4
+        );
+    reg carry_1, carry_2, carry_3, carry_4;
+    reg pipe1_valid, pipe2_valid, pipe3_valid, pipe4_valid;
+    wire pipe1_allowin, pipe2_allowin, pipe3_allowin, pipe4_allowin;
+    wire pipe1_to_pipe2_valid, pipe2_to_pipe3_valid, pipe3_to_pipe4_valid;
+    reg [31:0] a2,b2,a3,b3,a4,b4;
+    ///////////////////pipe 1////////////////////
+    assign cin = 0;
+    assign pipe1_allowin = !pipe1_valid || pipe1_ready_go && pipe2_allowin;
+    assign pipe1_to_pipe2_valid = pipe1_valid && pipe1_ready_go;
+    always@(posedge clk) 
+        begin
+            if(rst) pipe1_valid <= 1'b0; //reset pipeX_valid >> invalid
+            else if(pipe1_allowin) pipe1_valid <= (fresh_1 == 1)? 0 : validin;
+            if(validin && pipe1_allowin) begin 
+                {carry_1, sum1} <= {1'b0, a[7:0]} + {1'b0, b[7:0]} + cin;
+                a2 <= a;
+                b2 <= b;
+            end
+        end
+    ///////////////////pipe 2////////////////////
+    assign pipe2_allowin = !pipe2_valid || pipe2_ready_go && pipe3_allowin;
+    assign pipe2_to_pipe3_valid = pipe2_valid && pipe2_ready_go;
+    always@(posedge clk)
+        begin
+            if(rst) pipe2_valid <= 1'b0;
+            else if(pipe2_allowin) pipe2_valid <= (fresh_2 == 1)? 0 : pipe1_to_pipe2_valid;
+            if(pipe1_to_pipe2_valid && pipe2_allowin) begin
+                {carry_2, sum2} <= {{1'b0, a2[15:8]} + {1'b0, b2[15:8]} + carry_1, sum1};
+                b3 <= b2;
+                a3 <= a2;
+            end
+        end
+    ///////////////////pipe 3////////////////////
+    assign pipe3_allowin = !pipe3_valid || pipe3_ready_go && pipe4_allowin;
+    assign pipe3_to_pipe4_valid = pipe3_ready_go && pipe3_valid;
+    always@(posedge clk)
+        begin
+            if(rst) pipe3_valid <= 1'b0;
+            else if(pipe3_allowin) pipe3_valid <= (fresh_3 == 1)? 0 : pipe2_to_pipe3_valid;
+            if(pipe2_to_pipe3_valid && pipe3_allowin) begin
+                {carry_3, sum3} <= {{1'b0, a3[23:16]} + {1'b0, b3[23:16]} + carry_2, sum2};
+                a4 <= a3;
+                b4 <= b3;
+            end
+        end
+    ///////////////////pipe 4////////////////////
+    assign pipe4_allowin = !pipe4_valid || pipe4_ready_go && out_allowin;
+    always@(posedge clk)
+        begin
+            if(rst) pipe4_valid <= 1'b0;
+            else if(pipe4_allowin)  pipe4_valid <= (fresh_4 == 1)? 0 : pipe3_to_pipe4_valid;
+            if(pipe3_to_pipe4_valid && pipe4_allowin && pipe4_ready_go) 
+                {carry_4, sum4} <= {{1'b0, a4[31:24]} + {1'b0, b4[31:24]} + carry_3, sum3};
+            else
+                {carry_4, sum4} = 32'hxxxxxxxx;
+        end
+    assign validout = (pipe4_valid && pipe4_ready_go);
+    assign cout = carry_4;
+    assign result = sum4;
+\end{lstlisting}

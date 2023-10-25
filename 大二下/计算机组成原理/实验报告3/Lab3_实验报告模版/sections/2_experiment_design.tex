@@ -1,0 +1,38 @@
+\section{实验设计}
+
+\subsection{数据通路}\label{sub:datapath}
+\subsubsection{功能描述}
+简易单周期 CPU，支持整数算术逻辑运算，存取，跳转等指令。
+
+\subsubsection{接口定义}
+
+\begin{table}[htp]
+\caption{接口定义}\label{tab:signaldef}
+\begin{center}
+	\begin{tabular}{lllp{6cm}} \hline
+	\textbf{信号名} & \textbf{方向} & \textbf{位宽} & \textbf{功能描述}\\ \hline
+	writedata		& Output & 32-bit & regfile取出的RD2操作数,写入数据存储器\\ 
+	dataadr         & Output & 32-bit & 数值为ALU的结果，当memwrite有效时为写入存储器地址，无效时为读出存储器地址\\
+	instr           & Output & 32-bit & 从inst\_ram中读取的32位MIPS指令\\
+	pc              & Output & 32-bit & 程序计数器，每个时钟上升沿自增4，指向下一条指令\\
+	readdata        & Output & 32-bit & 从数据存储器读出的数据 \\ \hline
+	\end{tabular}
+\end{center}
+\end{table}
+
+\subsubsection{逻辑控制}
+\caption{逻辑控制}\label{tab:signaldef}
+\begin{center}
+	\begin{tabular}{llp{6cm}} \hline
+	\textbf{信号名} & \textbf{位宽} & \textbf{功能描述}\\ \hline
+	memtoreg	& 1-bit &  多选器控制信号，高电平代表写入寄存器堆的数据为从数据存储器中读取的数据，低电平代表alu结果写入寄存器堆\\
+	memtwrite	& 1-bit &  数据存储器写使能信号，高电平有效\\
+	pcsrc		& 1-bit &  多选器控制信号，高电平代表条件跳转指令生效，低电平代表pc+4\\
+	branch		& 1-bit &  高电平代表该指令为条件跳转指令\\
+	alusrc		& 1-bit &  多选器控制信号，高电平代表alu的第二个操作数来自符号拓展后的立即数，低电平代表RD2\\
+	regdst		& 1-bit &  多选器控制信号，高电平代表寄存器堆的写地址为ra3，低电平代表ra2\\
+	regwrite	& 1-bit &  寄存器堆写使能信号\\
+	jump        & 1-bit &  多选器控制信号，高电平代表无条件跳转指令生效，低电平代表不生效\\ \hline
+	\end{tabular}
+\end{center}
+\end{table}

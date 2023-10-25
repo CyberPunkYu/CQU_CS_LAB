@@ -1,0 +1,58 @@
+\section{实验设计}
+
+\subsection{数据通路模块}\label{sub:hazard}
+\subsubsection{功能描述}
+五级流水线 MIPS 处理器，支持简单的算术逻辑运算指令与跳转指令
+
+\newpage
+\subsubsection{接口定义}
+\begin{table}[htp]
+	\caption{接口定义}\label{tab:signaldef}
+	\begin{center}
+		\begin{tabular}{lllp{9cm}}
+		\hline
+		\textbf{信号名} & \textbf{方向} & \textbf{位宽} & \textbf{功能描述}\\  
+		instrF   		& Input & 32-bit & Ferch阶段A MIPS 32-bit Instruction read from ram.\\ 
+		pcF		        & Output& 32-bit & Fetch阶段程序计数器，每个时钟上升沿自增4，指向下一条指令.\\  
+		jumpD			& Output& 1-bit  & Decoder阶段当J型无条件分支指令为1.\\ 
+		branchD			& Output& 1-bit  & Decoder阶段条件分支指令执行后，条件成立则执行PC相对寻址，信号为1否则为0.\\ 
+		pcsrcD			& Output& 1-bit  & Decoder阶段高电平时pc由分支目标地址取代，低电平时pc+4.\\  
+		regdstE			& Output& 1-bit  & Execute阶段高电平时写寄存器的目标寄存器号来自rd(15:11)，低电平时来自rt(20:16).\\  
+		alu\_controlE	& Output& 3-bit  & Execute阶段ALU控制信号，由funct(5:0)和opcode(31:26)共同决定.\\  
+		alusrcE			& Output& 1-bit  & Execute阶段高电平时ALU第二个操作数来自指令低16位符号扩展，低电平时来自寄存器堆第二个输出.\\ 
+		overflowE		& Output& 1-bit  & Execute阶段ALU算数溢出.\\  
+		readdataM		& Intput& 32-bit & Memory阶段从数据存储器读出，输入datapath读入regfile.\\
+		writedataM		& Output& 32-bit & Memory阶段regfile取出的RD2操作数，写入数据存储器。只用于sw指令.\\ 
+		regwriteM		& Output& 1-bit  & Memory阶段高电平时指令写入寄存器堆.\\  
+		aluoutM		    & Output& 32-bit & Memory阶段数值为ALU的结果，当memwrite有效时为写入存储器地址.\\  
+		memwriteM		& Output& 1-bit  & Memory阶段高电平时将存数指令的rt寄存器值写入ALU计算结果指向的地址.\\  
+		memtoregM		& Output& 1-bit  & Memory阶段高电平时将取数指令的取数地址对应的存储器数据写入到寄存器堆rt寄存器.\\  
+		\hline
+		\end{tabular}
+	\end{center}
+	\end{table}
+
+
+\subsection{冒险处理模块}\label{sub:hazard}
+\subsubsection{功能描述}
+解决分支跳转指令控制冒险，load word 数据冒险以及 alu 数据冒险
+\subsubsection{接口定义}
+
+\begin{table}[htp]
+\caption{接口定义}\label{tab:signaldef}
+\begin{center}
+	\begin{tabular}{lllp{9cm}}
+		\hline
+		\textbf{信号名} & \textbf{方向} & \textbf{位宽} & \textbf{功能描述}\\  \hline
+		stallF   		& Output& 1-bit  & Ferch阶段暂停信号.\\  
+		stallD   		& Output& 1-bit  & Decode阶段暂停信号.\\  
+		flushE   		& Output& 1-bit  & Executer阶段刷新信号.\\  
+		branchD			& Input & 1-bit  & Decoder阶段条件分支指令执行后，条件成立则执行PC相对寻址，信号为1否则为0.\\  
+		forwardAD		& Output& 1-bit  & Decoder阶段如果lw指令与后面的指令发生数据冒险，且为rs寄存器则为1.\\  
+		forwardBD		& Output& 1-bit  & Decoder阶段如果lw指令与后面的指令发生数据冒险，且为rt寄存器则为1.\\  
+		forwardAE		& Output& 1-bit  & Executer阶段如果alu的rs操作数来自前面的指令，若在M阶段则为2，M阶段为1否则默认为0.\\  
+		forwardBE		& Output& 1-bit  & Executer阶段如果alu的rt操作数来自前面的指令，若在M阶段则为2，M阶段为1否则默认为0.\\ 
+		\hline
+	\end{tabular}
+\end{center}
+\end{table}

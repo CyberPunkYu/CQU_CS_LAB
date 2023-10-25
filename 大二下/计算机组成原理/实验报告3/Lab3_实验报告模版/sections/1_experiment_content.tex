@@ -1,0 +1,9 @@
+\section{实验内容}
+阅读实验原理实现以下模块：
+\begin{enumerate}[(1)]
+    \item Datapath，其中主要包含alu(实验一已完成)，PC(实验二已完成)，adder、mux2、signext、sl2(其中adder、mux2数字逻辑课程已实现，signext、sl2参见实验原理)，
+    \item Controller(实验二已完成)，其中包含两部分，分别为main\_decoder，alu\_decoder。
+    \item 指令存储器inst\_mem(Single Port Ram)，数据存储器data\_mem(Single Port Ram)；使用Block Memory Generator IP构造指令，注意考虑PC地址位数统一。(参考实验二)
+    \item 参照实验原理，将上述模块依指令执行顺序连接。实验给出top文件，需兼容top文件端口设定。
+    \item 实验给出仿真程序，最终以仿真输出结果判断是否成功实现要求指令。
+\end{enumerate}
