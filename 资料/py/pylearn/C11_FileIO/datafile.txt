@@ -1,0 +1,2 @@
+This is a file which is writable in text mode.
+'w' means open file in write mode.

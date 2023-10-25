@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "d:/pylearn/C11_FileIO/demo.py", line 23, in <module>
+    raise Exception("Error info")
+Exception: Error info

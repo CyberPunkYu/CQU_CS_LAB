@@ -1,0 +1,14 @@
+[Basic]
+sno = 2018197
+sname = Dora Henry
+iage = 17
+
+[Scores]
+scores.size = 3
+slessonname[0] = C++
+score[0] = 78
+slessonname[1] = Data Structure
+score[1] = 82.5
+slessonname[2] = Home Economics
+score[2] = 99
+

@@ -1,0 +1,70 @@
+2020-05-25 22:23:41.383623
+<class 'ZeroDivisionError'>
+ZeroDivisionError('division by zero')
+  File "d:/pylearn/C12_UnitTestException/excepthook.py", line 28, in <module>
+    main()
+
+  File "d:/pylearn/C12_UnitTestException/excepthook.py", line 20, in main
+    fResult = int(sFirst) / int(sSecond)
+
+
+2020-06-02 10:48:41.290887
+<class 'ZeroDivisionError'>
+ZeroDivisionError('division by zero')
+  File "d:/pylearn/C12_UnitTestException/demo.py", line 29, in <module>
+    main()
+
+  File "d:/pylearn/C12_UnitTestException/demo.py", line 21, in main
+    fResult = int(sFirst) / int(sSecond)
+
+
+2020-06-02 10:50:49.583965
+<class 'ValueError'>
+ValueError("invalid literal for int() with base 10: 'aa'")
+  File "d:/pylearn/C12_UnitTestException/demo.py", line 29, in <module>
+    main()
+
+  File "d:/pylearn/C12_UnitTestException/demo.py", line 21, in main
+    fResult = int(sFirst) / int(sSecond)
+
+
+2020-06-06 14:11:22.366938
+<class 'ZeroDivisionError'>
+ZeroDivisionError('division by zero')
+  File "d:/pylearn/C12_UnitTestException/excepthook.py", line 28, in <module>
+    main()
+
+  File "d:/pylearn/C12_UnitTestException/excepthook.py", line 20, in main
+    fResult = int(sFirst) / int(sSecond)
+
+
+2020-06-06 14:11:41.400628
+<class 'ValueError'>
+ValueError("invalid literal for int() with base 10: '2a'")
+  File "d:/pylearn/C12_UnitTestException/excepthook.py", line 28, in <module>
+    main()
+
+  File "d:/pylearn/C12_UnitTestException/excepthook.py", line 20, in main
+    fResult = int(sFirst) / int(sSecond)
+
+
+2020-06-06 14:12:28.852857
+<class 'ZeroDivisionError'>
+ZeroDivisionError('division by zero')
+  File "d:/pylearn/C12_UnitTestException/excepthook.py", line 28, in <module>
+    main()
+
+  File "d:/pylearn/C12_UnitTestException/excepthook.py", line 20, in main
+    fResult = int(sFirst) / int(sSecond)
+
+
+2020-06-06 14:12:48.886318
+<class 'ValueError'>
+ValueError("invalid literal for int() with base 10: '2a'")
+  File "d:/pylearn/C12_UnitTestException/excepthook.py", line 28, in <module>
+    main()
+
+  File "d:/pylearn/C12_UnitTestException/excepthook.py", line 20, in main
+    fResult = int(sFirst) / int(sSecond)
+
+

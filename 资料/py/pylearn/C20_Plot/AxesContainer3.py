@@ -1,0 +1,11 @@
+from matplotlib import pyplot as plt
+fig = plt.figure()
+ax = fig.add_subplot(111)
+print("xlim before:",ax.get_xlim())
+rt1 = plt.Rectangle((1,1),width=1,height=2)
+rt2 = plt.Rectangle((3,4),width=2,height=1)
+ax.add_patch(rt1)
+ax.add_patch(rt2)
+ax.autoscale_view()
+print("xlim after:",ax.get_xlim())
+plt.show()

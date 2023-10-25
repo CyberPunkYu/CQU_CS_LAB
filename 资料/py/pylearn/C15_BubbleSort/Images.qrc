@@ -1,0 +1,10 @@
+<RCC>
+  <qresource prefix="Images">
+    <file>img/copy.png</file>
+    <file>img/pause.png</file>
+    <file>img/globe.png</file>
+    <file>img/logout.png</file>
+    <file>img/poker.png</file>
+    <file>img/start.png</file>
+  </qresource>
+</RCC>
